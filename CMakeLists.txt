@@ -35,7 +35,9 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(rpi-pico-bare-metal-programming main.c )
+add_subdirectory(examples)
+
+add_executable(rpi-pico-bare-metal-programming main.c)
 
 pico_set_program_name(rpi-pico-bare-metal-programming "rpi-pico-bare-metal-programming")
 pico_set_program_version(rpi-pico-bare-metal-programming "0.1")
@@ -46,11 +48,13 @@ pico_enable_stdio_usb(rpi-pico-bare-metal-programming 0)
 
 # Add the standard library to the build
 target_link_libraries(rpi-pico-bare-metal-programming
-        pico_stdlib)
+        pico_stdlib
+        examples)
 
 # Add the standard include files to the build
 target_include_directories(rpi-pico-bare-metal-programming PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
+        examples/examples_info
 )
 
 pico_add_extra_outputs(rpi-pico-bare-metal-programming)
