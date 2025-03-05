@@ -8,9 +8,5 @@ int main()
 {
     stdio_init_all();
     build_examples();
-
-    while (true)
-    {
-        example_pointer();
-    }
+    example_pointer();
 }
